@@ -26,9 +26,8 @@
         </div>
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="fuelTypeTextBox">Tip goriva</asp:Label>
-            <asp:TextBox runat="server" CssClass="form-control" ID="fuelTypeTextBox"/>
-            <asp:RequiredFieldValidator ID="fuelTypeRequiredValidator" runat="server" ControlToValidate="fuelTypeTextBox" ErrorMessage="Unos tipa goriva je obavezan" ForeColor="#FF3300"></asp:RequiredFieldValidator>
+            <asp:Label runat="server" AssociatedControlID="fuelTypeRadio">Tip goriva</asp:Label>
+            <asp:RadioButtonList ID="fuelTypeRadio" runat="server"></asp:RadioButtonList>
         </div>
         
         <asp:Button  Runat="server" CssClass="btn btn-primary" OnClick="SubmitButton_Click" ID="submitButtonClick" Text="Kreiraj"/>

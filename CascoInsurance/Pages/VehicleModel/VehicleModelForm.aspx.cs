@@ -18,6 +18,7 @@ namespace CascoInsurance.Pages.VehicleModel
             if (!IsPostBack)
             {
                 BindBrandDropDownValues();
+                BindFuelTypeRadioButtons();
             }
             
         }
@@ -32,6 +33,19 @@ namespace CascoInsurance.Pages.VehicleModel
             vehicleBrandDropDown.Items.Insert(0, new ListItem("--Izaberi marku--", "0"));
         }
 
+        private void BindFuelTypeRadioButtons()
+        {
+            var fuelTypes = vehicleModelDao.GetAllVehicleModels()
+                .GroupBy(model => model.FuelType.Id)
+                .Select(model => model.FirstOrDefault().FuelType);
+
+            fuelTypeRadio.DataSource = fuelTypes;
+            fuelTypeRadio.DataValueField = "Id";
+            fuelTypeRadio.DataTextField = "Name";
+            fuelTypeRadio.DataBind();
+            fuelTypeRadio.Items[0].Selected = true;
+        }
+
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             Model.VehicleBrand brand = new Model.VehicleBrand
@@ -39,12 +53,17 @@ namespace CascoInsurance.Pages.VehicleModel
                 Id = Convert.ToInt32(vehicleBrandDropDown.SelectedItem.Value)
             };
 
+            Model.FuelType fuelType = new Model.FuelType
+            {
+                Id = Convert.ToInt32(fuelTypeRadio.SelectedValue)
+            };
+
             Model.VehicleModel newVehicleModel = new Model.VehicleModel
             {
                 Name = nameTextBox.Text,
                 Brand = brand,
                 EngineCapacity = Convert.ToDecimal(engineCapacityTextBox.Text),
-                FuelType = fuelTypeTextBox.Text
+                FuelType = fuelType
             };
 
             vehicleModelDao.InsertVehicleModel(newVehicleModel);

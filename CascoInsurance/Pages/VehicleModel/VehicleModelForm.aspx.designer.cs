@@ -76,22 +76,13 @@ namespace CascoInsurance.Pages.VehicleModel {
         protected global::System.Web.UI.WebControls.RangeValidator engineCapacityRangeValidator;
         
         /// <summary>
-        /// fuelTypeTextBox control.
+        /// fuelTypeRadio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fuelTypeTextBox;
-        
-        /// <summary>
-        /// fuelTypeRequiredValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator fuelTypeRequiredValidator;
+        protected global::System.Web.UI.WebControls.RadioButtonList fuelTypeRadio;
         
         /// <summary>
         /// submitButtonClick control.

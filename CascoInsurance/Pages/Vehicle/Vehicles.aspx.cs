@@ -32,12 +32,13 @@ namespace CascoInsurance.Pages.Vehicle
             dataTable.Columns.Add(CreateDataTableColumn("Registarski broj", "System.String"));
             dataTable.Columns.Add(CreateDataTableColumn("Broj motora", "System.String"));
             dataTable.Columns.Add(CreateDataTableColumn("Broj sasije", "System.String"));
+            dataTable.Columns.Add(CreateDataTableColumn("Marka", "System.String"));
+            dataTable.Columns.Add(CreateDataTableColumn("Model", "System.String"));
             dataTable.Columns.Add(CreateDataTableColumn("Snaga motora", "System.String"));
             dataTable.Columns.Add(CreateDataTableColumn("Broj mesta za sedenje", "System.Int32"));
             dataTable.Columns.Add(CreateDataTableColumn("Cena", "System.Decimal"));
             dataTable.Columns.Add(CreateDataTableColumn("Godina proizvodnje", "System.Int32"));
-            dataTable.Columns.Add(CreateDataTableColumn("Marka", "System.String"));
-            dataTable.Columns.Add(CreateDataTableColumn("Model", "System.String"));
+            
 
             DataRow dataRow;
             Model.Vehicle vehicle;

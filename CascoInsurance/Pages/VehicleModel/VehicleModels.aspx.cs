@@ -47,7 +47,7 @@ namespace CascoInsurance.Pages.VehicleModel
                 dataRow["Naziv modela"] = vehicleModel.Name;
                 dataRow["Naziv marke"] = vehicleModel.Brand.Name;
                 dataRow["Zapremina motora"] = vehicleModel.EngineCapacity;
-                dataRow["Vrsta goriva"] = vehicleModel.FuelType;
+                dataRow["Vrsta goriva"] = vehicleModel.FuelType.Name;
 
                 dataTable.Rows.Add(dataRow);
             }

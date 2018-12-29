@@ -12,7 +12,7 @@ namespace CascoInsurance.Model
         public VehicleBrand Brand { get; set; }
         public string Name { get; set; }
         public decimal EngineCapacity { get; set; }
-        public string FuelType { get; set; }
+        public FuelType FuelType { get; set; }
 
 
         public override string ToString()

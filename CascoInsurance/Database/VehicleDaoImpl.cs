@@ -41,7 +41,7 @@ namespace CascoInsurance.Database
 
         public List<Vehicle> GetAllVehicles()
         {
-            string queryString = "SELECT Vozilo.registarski_broj, Vozilo.broj_motora, Vozilo.broj_sasije, Vozilo.snaga_motora, Vozilo.broj_mesta_za_sedenje, Vozilo.cena, Vozilo.godina_proizvodnje, Model_vozila.broj_modela_vozila, Model_vozila.naziv_modela, Model_vozila.vrsta_goriva, Model_vozila.zapremina_motora, Marka_vozila.ID_marke_vozila, Marka_vozila.naziv_marke_vozila FROM Vozilo JOIN Model_vozila ON (Vozilo.broj_modela_vozila = Model_vozila.broj_modela_vozila) JOIN Marka_vozila ON (Model_vozila.ID_marke_vozila = Marka_vozila.ID_marke_vozila)";
+            string queryString = "SELECT Vozilo.registarski_broj, Vozilo.broj_motora, Vozilo.broj_sasije, Vozilo.snaga_motora, Vozilo.broj_mesta_za_sedenje, Vozilo.cena, Vozilo.godina_proizvodnje, Model_vozila.broj_modela_vozila, Model_vozila.naziv_modela, Model_vozila.ID_tipa_goriva, Model_vozila.zapremina_motora, Marka_vozila.ID_marke_vozila, Marka_vozila.naziv_marke_vozila, Tip_goriva.naziv FROM Vozilo JOIN Model_vozila ON (Vozilo.broj_modela_vozila = Model_vozila.broj_modela_vozila) JOIN Marka_vozila ON (Model_vozila.ID_marke_vozila = Marka_vozila.ID_marke_vozila) JOIN Tip_goriva ON (Model_vozila.ID_tipa_goriva = Tip_goriva.id)";
             List<Vehicle> returnList = new List<Vehicle>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -59,13 +59,19 @@ namespace CascoInsurance.Database
                             Name = reader.GetString(12)
                         };
 
+                        FuelType fuelType = new FuelType
+                        {
+                            Id = reader.GetInt32(9),
+                            Name = reader.GetString(13)
+                        };
+
                         VehicleModel vehicleModel = new VehicleModel
                         {
                             Id = reader.GetInt32(7),
                             Name = reader.GetString(8),
                             Brand = vehicleBrand,
                             EngineCapacity = reader.GetDecimal(10),
-                            FuelType = reader.GetString(9)
+                            FuelType = fuelType
                         };
 
                         Vehicle vehicle = new Vehicle
@@ -102,7 +108,7 @@ namespace CascoInsurance.Database
 
         public Vehicle GetVehicle(string registerNumber)
         {
-            string queryString = "SELECT Vozilo.registarski_broj, Vozilo.broj_motora, Vozilo.broj_sasije, Vozilo.snaga_motora, Vozilo.broj_mesta_za_sedenje, Vozilo.cena, Vozilo.godina_proizvodnje, Model_vozila.broj_modela_vozila, Model_vozila.naziv_modela, Model_vozila.vrsta_goriva, Model_vozila.zapremina_motora, Marka_vozila.ID_marke_vozila, Marka_vozila.naziv_marke_vozila FROM Vozilo JOIN Model_vozila ON (Vozilo.broj_modela_vozila = Model_vozila.broj_modela_vozila) JOIN Marka_vozila ON (Model_vozila.ID_marke_vozila = Marka_vozila.ID_marke_vozila) WHERE Vozilo.registarski_broj = @registerNumber";
+            string queryString = "SELECT Vozilo.registarski_broj, Vozilo.broj_motora, Vozilo.broj_sasije, Vozilo.snaga_motora, Vozilo.broj_mesta_za_sedenje, Vozilo.cena, Vozilo.godina_proizvodnje, Model_vozila.broj_modela_vozila, Model_vozila.naziv_modela, Model_vozila.ID_tipa_goriva, Model_vozila.zapremina_motora, Marka_vozila.ID_marke_vozila, Marka_vozila.naziv_marke_vozila, Tip_goriva.naziv FROM Vozilo JOIN Model_vozila ON (Vozilo.broj_modela_vozila = Model_vozila.broj_modela_vozila) JOIN Marka_vozila ON (Model_vozila.ID_marke_vozila = Marka_vozila.ID_marke_vozila) JOIN Tip_goriva ON (Model_vozila.ID_tipa_goriva = Tip_goriva.id) WHERE Vozilo.registarski_broj = @registerNumber";
             Vehicle returnValue = null;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -122,13 +128,19 @@ namespace CascoInsurance.Database
                             Name = reader.GetString(12)
                         };
 
+                        FuelType fuelType = new FuelType
+                        {
+                            Id = reader.GetInt32(9),
+                            Name = reader.GetString(13)
+                        };
+
                         VehicleModel vehicleModel = new VehicleModel
                         {
                             Id = reader.GetInt32(7),
                             Name = reader.GetString(8),
                             Brand = vehicleBrand,
                             EngineCapacity = reader.GetDecimal(10),
-                            FuelType = reader.GetString(9)
+                            FuelType = fuelType
                         };
 
                         returnValue = new Vehicle
