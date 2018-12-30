@@ -8,19 +8,19 @@ using CascoInsurance.Model;
 
 namespace CascoInsurance.Database
 {
-    public class VehicleBrandDaoImpl : IVehicleBrandDao
+    public class RiskPackageDaoImpl : IRiskPackageDao
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KaskoOsiguranje"].ConnectionString;
 
-        public void DeleteVehicleBrand(int id)
+        public void DeleteRiskPackage(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<VehicleBrand> GetAllVehicleBrands()
+        public List<RiskPackage> GetAllRiskPackages()
         {
-            string queryString = "SELECT * FROM Marka_vozila";
-            List<VehicleBrand> returnList = new List<VehicleBrand>();
+            string queryString = "SELECT * FROM Paket_rizika";
+            List<RiskPackage> returnList = new List<RiskPackage>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(queryString, connection))
@@ -31,12 +31,13 @@ namespace CascoInsurance.Database
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        VehicleBrand vehicleBrand = new VehicleBrand
+                        RiskPackage riskPackage = new RiskPackage
                         {
                             Id = reader.GetInt32(0),
-                            Name = reader.GetString(1)
+                            Name = reader.GetString(1),
+                            PercentageValue = reader.GetDecimal(2)
                         };
-                        returnList.Add(vehicleBrand);
+                        returnList.Add(riskPackage);
                     }
 
                     reader.Close();
@@ -55,33 +56,14 @@ namespace CascoInsurance.Database
             }
         }
 
-        public VehicleBrand GetVehicleBrand(int id)
+        public RiskPackage GetRiskPackage(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void InsertVehicleBrand(VehicleBrand vehicleBrand)
+        public void InsertRiskPackage(RiskPackage riskPackage)
         {
-            string queryString = "INSERT INTO Marka_vozila (naziv_marke_vozila) VALUES (@name)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(queryString, connection))
-            {
-                command.Parameters.AddWithValue("@name", vehicleBrand.Name);
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
+            throw new NotImplementedException();
         }
     }
 }

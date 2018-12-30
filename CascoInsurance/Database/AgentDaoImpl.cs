@@ -8,19 +8,24 @@ using CascoInsurance.Model;
 
 namespace CascoInsurance.Database
 {
-    public class VehicleBrandDaoImpl : IVehicleBrandDao
+    public class AgentDaoImpl : IAgentDao
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KaskoOsiguranje"].ConnectionString;
 
-        public void DeleteVehicleBrand(int id)
+        public void DeleteAgent(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<VehicleBrand> GetAllVehicleBrands()
+        public Agent GetAgent(int id)
         {
-            string queryString = "SELECT * FROM Marka_vozila";
-            List<VehicleBrand> returnList = new List<VehicleBrand>();
+            throw new NotImplementedException();
+        }
+
+        public List<Agent> GetAllAgents()
+        {
+            string queryString = "SELECT * FROM Agent_osiguranja JOIN Filijala ON (Agent_osiguranja.ID_filijale = Filijala.ID_filijale)";
+            List<Agent> returnList = new List<Agent>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(queryString, connection))
@@ -31,12 +36,26 @@ namespace CascoInsurance.Database
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        VehicleBrand vehicleBrand = new VehicleBrand
+                        Affiliate affiliate = new Affiliate
+                        {
+                            Id = reader.GetInt32(6),
+                            Name = reader.GetString(7),
+                            Address = reader.GetString(8),
+                            City = reader.GetString(9)
+                        };
+
+                        Agent agent = new Agent
                         {
                             Id = reader.GetInt32(0),
-                            Name = reader.GetString(1)
+                            FirstName = reader.GetString(1),
+                            LastName = reader.GetString(2),
+                            PhoneNumber = reader.GetString(3),
+                            Email = reader.GetString(4),
+                            Affiliate = affiliate
                         };
-                        returnList.Add(vehicleBrand);
+
+
+                        returnList.Add(agent);
                     }
 
                     reader.Close();
@@ -55,33 +74,9 @@ namespace CascoInsurance.Database
             }
         }
 
-        public VehicleBrand GetVehicleBrand(int id)
+        public void InsertAgent(Agent agent)
         {
             throw new NotImplementedException();
-        }
-
-        public void InsertVehicleBrand(VehicleBrand vehicleBrand)
-        {
-            string queryString = "INSERT INTO Marka_vozila (naziv_marke_vozila) VALUES (@name)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(queryString, connection))
-            {
-                command.Parameters.AddWithValue("@name", vehicleBrand.Name);
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
         }
     }
 }

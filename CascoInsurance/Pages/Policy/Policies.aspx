@@ -2,8 +2,13 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
-    <div>
+    <h1 style="text-align: center">Polise</h1>
+    <br />
+
+    <asp:GridView id="policiesTable" Width="80%" HorizontalAlign="Center" CssClass="table" runat="server">
       
-    </div>
+    </asp:GridView>
+
+    <asp:HyperLink NavigateUrl="~/Pages/Policy/PolicyForm.aspx" Text="Dodaj novu polisu" runat="server"></asp:HyperLink>
 
 </asp:Content>

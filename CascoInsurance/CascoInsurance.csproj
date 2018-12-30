@@ -219,11 +219,19 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Database\AffiliateDaoImpl.cs" />
+    <Compile Include="Database\AgentDaoImpl.cs" />
+    <Compile Include="Database\IAffiliateDao.cs" />
+    <Compile Include="Database\IAgentDao.cs" />
     <Compile Include="Database\IInsuredDao.cs" />
     <Compile Include="Database\InsuredDaoImpl.cs" />
+    <Compile Include="Database\IPolicyDao.cs" />
+    <Compile Include="Database\IRiskPackageDao.cs" />
     <Compile Include="Database\IVehicleBrandDao.cs" />
     <Compile Include="Database\IVehicleDao.cs" />
     <Compile Include="Database\IVehicleModelDao.cs" />
+    <Compile Include="Database\PolicyDaoImpl.cs" />
+    <Compile Include="Database\RiskPackageDaoImpl.cs" />
     <Compile Include="Database\VehicleBrandDaoImpl.cs" />
     <Compile Include="Database\VehicleDaoImpl.cs" />
     <Compile Include="Database\VehicleModelDaoImpl.cs" />
@@ -237,8 +245,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Affiliate.cs" />
+    <Compile Include="Model\Agent.cs" />
     <Compile Include="Model\FuelType.cs" />
     <Compile Include="Model\Insured.cs" />
+    <Compile Include="Model\Policy.cs" />
+    <Compile Include="Model\RiskPackage.cs" />
     <Compile Include="Model\Vehicle.cs" />
     <Compile Include="Model\VehicleBrand.cs" />
     <Compile Include="Model\VehicleModel.cs" />

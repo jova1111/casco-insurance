@@ -13,6 +13,7 @@
         </div>
 
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="vehicleBrandDropDown">Marka</asp:Label>
             <asp:DropDownList runat="server" CssClass="form-control" ID="vehicleBrandDropDown"></asp:DropDownList>
             <asp:RequiredFieldValidator ID="requiredBrandSelectValidator" runat="server" ControlToValidate="vehicleBrandDropDown" InitialValue="0" ErrorMessage="Izbor marke je obavezan" ForeColor="#FF3300"></asp:RequiredFieldValidator>
         </div>

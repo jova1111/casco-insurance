@@ -8,19 +8,24 @@ using CascoInsurance.Model;
 
 namespace CascoInsurance.Database
 {
-    public class VehicleBrandDaoImpl : IVehicleBrandDao
+    public class AffiliateDaoImpl : IAffiliateDao
     {
         private string connectionString = ConfigurationManager.ConnectionStrings["KaskoOsiguranje"].ConnectionString;
 
-        public void DeleteVehicleBrand(int id)
+        public void DeleteAffiliate(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<VehicleBrand> GetAllVehicleBrands()
+        public Affiliate GetAffiliate(int id)
         {
-            string queryString = "SELECT * FROM Marka_vozila";
-            List<VehicleBrand> returnList = new List<VehicleBrand>();
+            throw new NotImplementedException();
+        }
+
+        public List<Affiliate> GetAllAffiliates()
+        {
+            string queryString = "SELECT * FROM Filijala";
+            List<Affiliate> returnList = new List<Affiliate>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             using (SqlCommand command = new SqlCommand(queryString, connection))
@@ -31,12 +36,14 @@ namespace CascoInsurance.Database
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        VehicleBrand vehicleBrand = new VehicleBrand
+                        Affiliate affilate = new Affiliate
                         {
                             Id = reader.GetInt32(0),
-                            Name = reader.GetString(1)
+                            Name = reader.GetString(1),
+                            Address = reader.GetString(2),
+                            City = reader.GetString(3)
                         };
-                        returnList.Add(vehicleBrand);
+                        returnList.Add(affilate);
                     }
 
                     reader.Close();
@@ -55,33 +62,9 @@ namespace CascoInsurance.Database
             }
         }
 
-        public VehicleBrand GetVehicleBrand(int id)
+        public void InsertAffiliate(Affiliate affiliate)
         {
             throw new NotImplementedException();
-        }
-
-        public void InsertVehicleBrand(VehicleBrand vehicleBrand)
-        {
-            string queryString = "INSERT INTO Marka_vozila (naziv_marke_vozila) VALUES (@name)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            using (SqlCommand command = new SqlCommand(queryString, connection))
-            {
-                command.Parameters.AddWithValue("@name", vehicleBrand.Name);
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
         }
     }
 }

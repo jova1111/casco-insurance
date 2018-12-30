@@ -19,7 +19,7 @@ namespace CascoInsurance.Pages.Policy {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox startDateTextBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl startDateTextBox;
         
         /// <summary>
         /// startDateRequiredValidator control.
@@ -31,13 +31,22 @@ namespace CascoInsurance.Pages.Policy {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator startDateRequiredValidator;
         
         /// <summary>
-        /// endDateTextBox control.
+        /// validateStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox endDateTextBox;
+        protected global::System.Web.UI.WebControls.CustomValidator validateStartDate;
+        
+        /// <summary>
+        /// expireDateTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl expireDateTextBox;
         
         /// <summary>
         /// endDateRequiredValidator control.
@@ -49,67 +58,148 @@ namespace CascoInsurance.Pages.Policy {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator endDateRequiredValidator;
         
         /// <summary>
-        /// vehicleBrandDropDown control.
+        /// riskPackageDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList vehicleBrandDropDown;
+        protected global::System.Web.UI.WebControls.DropDownList riskPackageDropDown;
         
         /// <summary>
-        /// requiredBrandSelectValidator control.
+        /// riskPackageRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredBrandSelectValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator riskPackageRequiredValidator;
         
         /// <summary>
-        /// engineCapacityTextBox control.
+        /// insuredDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox engineCapacityTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList insuredDropDown;
         
         /// <summary>
-        /// engineCapacityValidator control.
+        /// requiredInsuredSelectValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator engineCapacityValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredInsuredSelectValidator;
         
         /// <summary>
-        /// engineCapacityRangeValidator control.
+        /// affiliateDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator engineCapacityRangeValidator;
+        protected global::System.Web.UI.WebControls.DropDownList affiliateDropDown;
         
         /// <summary>
-        /// fuelTypeTextBox control.
+        /// requiredAffiliateSelectValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fuelTypeTextBox;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredAffiliateSelectValidator;
         
         /// <summary>
-        /// fuelTypeRequiredValidator control.
+        /// agentDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator fuelTypeRequiredValidator;
+        protected global::System.Web.UI.WebControls.DropDownList agentDropDown;
+        
+        /// <summary>
+        /// requiredAgentSelectValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredAgentSelectValidator;
+        
+        /// <summary>
+        /// registerNumberDropDown control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList registerNumberDropDown;
+        
+        /// <summary>
+        /// requiredRegisterNumberValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredRegisterNumberValidator;
+        
+        /// <summary>
+        /// premiumTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox premiumTextBox;
+        
+        /// <summary>
+        /// premiumRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator premiumRequiredValidator;
+        
+        /// <summary>
+        /// premiumRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator premiumRangeValidator;
+        
+        /// <summary>
+        /// bonusTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox bonusTextBox;
+        
+        /// <summary>
+        /// bonusRequiredValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator bonusRequiredValidator;
+        
+        /// <summary>
+        /// bounsRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator bounsRangeValidator;
         
         /// <summary>
         /// submitButtonClick control.
